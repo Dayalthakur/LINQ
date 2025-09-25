@@ -1,4 +1,9 @@
 ﻿
+using Microsoft.VisualBasic;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LINQ
@@ -190,14 +195,128 @@ namespace LINQ
 
 
 
-            Console.WriteLine("\n---------FirstOrDefault----------\n");
-            var fddata = people.FirstOrDefault(p => p.Age > 50);
-            Console.WriteLine(fddata!=null ?
-                $"The name of customer with age greater than 50 is {fddata.Name}"
-                : "No person with age greater than 50");
+            //Console.WriteLine("\n---------FirstOrDefault----------\n");
+            //var fddata = people.FirstOrDefault(p => p.Age > 50);
+            //Console.WriteLine(fddata!=null ?
+            //    $"The name of customer with age greater than 50 is {fddata.Name}"
+            //    : "No person with age greater than 50");
+
+
+
+            ////Q1.Find all even numbers from a list using LINQ.
+            //var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //var evenNumbers = numbers.Where(n => n % 2 == 0);
+            //Console.WriteLine("Even Numbers are : ");
+            //foreach(var i in evenNumbers)
+            //{
+            //    Console.Write(i+" ");
+            //}
+
+
+
+            ////Q2.Select names that start with "A".
+            //var names = new List<string> { "Amit", "Rahul", "Anil", "Deepak" };
+            //var Anames = names.Where(n => n.StartsWith("A"));
+            //Console.WriteLine("Name starting with letter A : ");
+            //foreach (var n in Anames)
+            //{
+            //    Console.WriteLine(n);
+            //}
+
+
+            ////Q3.Find duplicate numbers in a list using LINQ.
+            //var numbers = new List<int> { 1, 2, 3, 2, 4, 5, 5, 6 };
+            //var duplicatenumbers = numbers.GroupBy(n => n).Where(g => g.Count() > 1).ToList();
+            //foreach(var d in duplicatenumbers)
+            //{
+            //    Console.WriteLine(d.Key);
+            //}
+
+
+            ////Q4.Join two lists(like SQL INNER JOIN).
+            //    var students = new[]
+            //    {
+            //        new{StudentId=1,Name="Alice" },
+            //        new{StudentId=2,Name="Bob" },
+            //        new{StudentId=3,Name="Charlie" }
+            //    };
+            //    var scores = new[]
+            //    {
+            //        new{StudentId=1,Score=85 },
+            //        new{StudentId=2,Score=90 },
+            //        new{StudentId=4,Score=95 }
+            //    };
+
+            //    var result = from s in students
+            //                 join sc in scores
+            //               on s.StudentId equals sc.StudentId
+            //                 select new { s.Name, sc.Score };
+            //    Console.WriteLine("Student Scores : ");
+            //    foreach (var r in result)
+            //    {
+            //        Console.WriteLine($"{r.Name} : {r.Score}");
+            //    }
+
+
+
+            ////Q5.Find the highest salary employee in each department.
+            //            var employees = new[]
+            //{
+            //    new { Id = 1, Dept = "IT", Salary = 50000 },
+            //    new { Id = 2, Dept = "HR", Salary = 40000 },
+            //    new { Id = 3, Dept = "IT", Salary = 70000 },
+            //    new { Id = 4, Dept = "HR", Salary = 45000 }
+            //};
+            //            var highestsalary = employees.OrderByDescending(s => s.Salary).GroupBy(e => e.Dept).First();
+            //            foreach (var h in highestsalary)
+            //            {
+            //                //var emp = h.First();
+            //                Console.WriteLine($"The highest salary in {highestsalary.Key} department is {h.Salary}");
+            //            }
+
+
+
+            ////Write a LINQ query to get all odd numbers from a list.
+            //var num = new List<int> { 1, 2, 3, 4, 5, 6, 7, 89, 10 };
+            //var oddnum = num.Where(n => n % 2 != 0);
+            //foreach(var o in oddnum)
+            //{
+            //    Console.WriteLine(o);
+            //}
+
+
+
+            ////Find the maximum, minimum, sum, and average from a list of integers.
+            //var num = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 23, 45, 64, 5 };
+            //var highnum = num.Max();
+            //var lownum = num.Min();
+            //var avg = num.Average();
+            //var sum = num.Sum();
+            //Console.WriteLine($"The maximum number is : {highnum}\nThe minimum number is : {lownum}\nThe average is : {avg}\nThe sum is : {sum}");
+
+
+
+
+            ////Sort a list of strings alphabetically using LINQ.
+            //var str=new List<string> { "Banana", "Apple", "Mango", "Pineapple", "Grapes" };
+            //var sortstr = str.OrderBy(s => s);
+            //foreach(var s in sortstr)
+            //{
+            //    Console.WriteLine(s);
+            //}
+
+
+
+            ////Count how many times each number appears in a list.
+            //var numbers = new List<int> { 1, 3, 8, 4, 6, 8, 6, 4, 3, 1, 1, 3, 4, 5, 7, 9, 9, 7, 6, 4, 3, 7 };
+            //var countnum = numbers.GroupBy(n => n)
+            //    .Select(g => new { Number = g.Key, Count = g.Count() });
+            //foreach (var c in countnum)
+            //{
+            //    Console.WriteLine($"The number {c.Number} appears {c.Count} times");
+
+            //}
         }
-
-
 
     }
 
