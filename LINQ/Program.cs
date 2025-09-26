@@ -1,9 +1,13 @@
 ﻿
 using Microsoft.VisualBasic;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
+using static LINQ.Program;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LINQ
@@ -36,9 +40,9 @@ namespace LINQ
 {
     new Person { Id = 1, Name = "Alice", Age = 25, IsActive = true, City = "New York" },
     new Person { Id = 2, Name = "Bob", Age = 30, IsActive = false, City = "London" },
-    new Person { Id = 3, Name = "Charlie", Age = 22, IsActive = true, City = "New York" },
+    new Person { Id = 3, Name = "Charlie", Age = 30, IsActive = true, City = "New York" },
     new Person { Id = 4, Name = "Diana", Age = 35, IsActive = true, City = "Paris" },
-    new Person { Id = 5, Name = "Ethan", Age = 28, IsActive = false, City = "London" },
+    new Person { Id = 5, Name = "Ethan", Age = 25, IsActive = false, City = "London" },
     new Person { Id = 6, Name = "Fiona", Age = 40, IsActive = true, City = "Paris" }
 };
 
@@ -316,9 +320,145 @@ namespace LINQ
             //    Console.WriteLine($"The number {c.Number} appears {c.Count} times");
 
             //}
-        }
 
+
+
+
+            ////Find all distinct numbers from a list.
+            //int[] numb = { 45, 45, 645, 64, 53,35, 56, 77, 897, 85, 6, 45, 35, 3, 56, 7, 7, 8, 8, 9, 95 };
+            //var distinctnum = numb.Distinct();
+            //Console.WriteLine("The Distinct numbers are : ");
+            //foreach(var d in distinctnum)
+            //{
+            //    Console.Write(d+" ");
+            //}
+
+
+
+            ////Write a LINQ query to return employees ordered by department then by salary.
+            //var orderemp = people.OrderBy(p => p.Age).ThenBy(p => p.Name);
+            //Console.WriteLine("Employees ordered by Age then by Name : ");
+            //foreach(var e in orderemp)
+            //{
+            //    Console.WriteLine($"{e.Name} : {e.Age}");
+            //}
+
+
+
+            ////Get the first 5 elements from a list and skip the next 5 elements.
+            //var numlist = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            //var first5 = numlist.Take(5);
+            //var skipnext5 = numlist.Skip(10);
+            //var li= first5.Concat(skipnext5);
+            //Console.WriteLine("The first 5 elements and last 5 elements are : ");
+            //foreach(var l in li)
+            //{
+            //    Console.WriteLine(l);
+            //}
+
+
+
+            ////Return the top 3 highest salaries from the employees list.
+            //var employee = new[]
+            //{
+            //    new {Id=1,Name="Amit",Salary=45000 },
+            //    new {Id=2,Name="Rahul",Salary=55000 },
+            //    new {Id=3,Name="Anil",Salary=35000 },
+            //    new {Id=4,Name="Sumit",Salary=75000 },
+            //    new {Id=5,Name="Deepak",Salary=25000 }
+            //};
+            //var top3 = employee.OrderByDescending(p => p.Salary).Take(3);
+            //foreach(var t in top3)
+            //{
+            //    Console.WriteLine($"{t.Name} : {t.Salary}");
+            //}
+
+
+
+            ////Return all employees except the one with the lowest salary.
+            //var lowest = employee.OrderBy(e => e.Salary).Skip(1);
+            //foreach (var i in lowest)
+            //{
+            //    Console.WriteLine(i.Id+" "+i.Salary+" "+i.Name);
+            //}
+
+
+            ////Find students who scored more than the average marks.
+            //var scores = new[]
+            //    {
+            //        new{StudentId=1,Score=85 },
+            //        new{StudentId=2,Score=90 },
+            //        new{StudentId=4,Score=95 }
+            //    };
+
+            //var avg1 = scores.Where(s => s.Score > scores.Average(s => s.Score));
+            //foreach (var s in avg1)
+            //{
+            //    Console.WriteLine(s.StudentId);
+            //}
+
+
+
+            ////Check if a list contains a specific element using LINQ (Contains).
+            //var listcon=new List<string> { "Apple", "Banana", "Mango", "Orange" };
+            //var lis = listcon.Contains("Mango");
+            //Console.WriteLine(lis);
+
+
+
+            //Find the maximum salary in each department.
+
+            // var employees = new[]
+            //{
+            //     new { Id = 1, Dept = "IT", Salary = 50000 },
+            //         new { Id = 2, Dept = "HR", Salary = 40000 },
+            //         new { Id = 3, Dept = "IT", Salary = 70000 },
+            //         new { Id = 4, Dept = "HR", Salary = 45000 }
+            //     };
+            // var sala = employees.GroupBy(e => e.Dept).Select(g => new { Department = g.Key, Salary = g.Max(emp => emp.Salary) });
+            // foreach (var s in sala)
+            // {
+            //     Console.WriteLine($"The highest salary in {s.Department} department is {s.Salary}");
+            // }
+
+
+
+            ////Find employees whose names start with “R” and end with “h”.
+            //var l = people.Where(p => p.Name.StartsWith("A") && p.Name.EndsWith("e"));
+            //foreach (var i in l)
+            //{
+            //    Console.WriteLine(i.Name);
+            //}
+
+
+
+
+            ////Split a list into even - indexed and odd-indexed elements using LINQ.
+
+            //var index = people.Select((p, index) => new { Person = p, Index = index });
+            //var evenindex = index.Where(x => x.Index % 2 == 0).Select(x => x.Person);
+            //var oddindex = index.Where(x => x.Index % 2 != 0).Select(x => x.Person);
+            //Console.WriteLine("The even indexed elements are : ");
+            //foreach (var e in evenindex)
+            //{
+            //    Console.WriteLine(e.Name);
+            //}
+
+
+
+
+            ////Filter out null or empty strings from a collection.
+
+            //var strings = new List<string> { "Apple", "", null, "Banana", "Mango", "", "Orange", null };
+            //var filteredStrings = strings.Where(s => !string.IsNullOrEmpty(s));
+            //foreach (var str in filteredStrings)
+            //{
+            //    Console.WriteLine(str);
+
+            //}
+        }
     }
+
 
 }
 
